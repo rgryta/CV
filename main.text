@@ -1,0 +1,224 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\input{glyphtounicode}
+
+% font options
+\usepackage{newpxtext}
+\linespread{1.05}  % palladio needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{}  % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\footskip}{5pt}
+
+% sections formatting
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+% ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% custom commands
+\newcommand{\cvitem}[1]{
+  \item\small{
+    {#1\vspace{-2pt}}
+  }
+}
+
+\newcommand{\cvheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\cvheadingstart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\cvheadingend}{\end{itemize}}
+\newcommand{\cvitemstart}{\begin{itemize}[label=\textopenbullet]\justifying}
+\newcommand{\cvitemend}{\end{itemize}\vspace{-5pt}}
+
+\newcommand{\cvskill}[2]{
+  \textcolor{black}{\textbf{#1}}\hfill
+  \foreach \x in {1,...,5}{%
+    \space{\ifnumgreater{\x}{#2}{\color{black!80!white!20}}{\color{black}}\faSquare}}\par%
+  \vspace{-2pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\footnotesize$\bullet$}}$}
+
+\begin{document}
+
+% contact information
+\begin{center}
+  \textbf{\LARGE\scshape Radosław Gryta} \\
+  MSc 
+  $\ \diamond\ $ 
+  MBA 
+  \\
+  \vspace{1pt}\small
+  \href{mailto:radek.gryta@gmail.com}{radek.gryta@gmail.com}
+  $\ \diamond\ $ 
+  (+48) 500-118-219
+  $\ \diamond\ $
+  \href{https://www.linkedin.com/}{https://www.linkedin.com/in/rgryta/}
+\end{center}
+
+\section{Education}
+\cvheadingstart
+  \cvheading
+    {Warsaw School of Economics}{Warsaw, PL}
+    {Executive MBA, MBA for Startups}{12/2022 - 05/2025}
+  \cvheading
+    {Warsaw University of Technology}{Warsaw, PL}
+    {M.Sc. in Engineering, Automatic Control and Robotics}{03/2020 - 06/2022}
+  \cvheading
+    {Warsaw University of Technology}{Warsaw, PL}
+    {B.Sc. in Engineering, Automatic Control and Robotics}{09/2015 - 02/2020}
+\cvheadingend
+
+\section{Professional Experience}
+\cvheadingstart
+  \cvheading
+    {Box Inc.}{Warsaw, PL}
+    {Software Engineer}{01/2023 - Present}
+  \cvitemstart
+    \cvitem{Built automation tools in Python integrating Temporal.io, JIRA, Jenkins, Git, and GCP; reduced recurring DevOps tasks by over 50\%.}
+    \cvitem{Led a comprehensive modernization of legacy internal tools, unlocking up to 10x speed improvements and reinforcing system reliability while elevating the overall developer experience.}
+    \cvitem{Architected and implemented scalable backend services in Python and Scala leveraging GCP technologies (Pub/Sub, Dataflow, BigTable, BigQuery) and MySQL connectivity.}
+    \cvitem{Designed and implemented a FastAPI-based API Factory to standardize delivery across 10+ areas, significantly reducing time-to-market and ensuring cross-functional alignment.}
+    \cvitem{Migrated infrastructure to Google Kubernetes Engine (GKE), boosting observability, uptime, and deployment scalability.}
+    \cvitem{Led cross-service performance tuning initiatives, optimizing resource usage and reducing latency in key pipelines.}
+  \cvitemend
+
+  \cvheading
+    {Deloitte Consulting S.A.}{Warsaw, PL}
+    {Senior Specialist}{09/2021 - 12/2022}
+  \cvitemstart
+    \cvitem{Designed and delivered migration demos for complex financial systems (T24, Vault), helping secure client engagements.}
+    \cvitem{Developed automation tools in Python and Java for cutover processes, reducing manual deployment time by 40\%.}
+    \cvitem{Built data processing pipelines for test automation and GDPR-compliant anonymization, cutting data prep time by 60\%.}
+    \cvitem{Integrated Kafka, REST APIs, and IBM MQ to enhance cross-system data reliability and monitoring.}
+    \cvitem{Led a 4-person team on a Canadian T24 migration project, owning architecture, roadmap, and client delivery.}
+  \cvitemend
+
+  \cvheading
+    {Deloitte Consulting S.A.}{Warsaw, PL}
+    {Consultant}{10/2018 - 08/2021}
+  \cvitemstart
+    \cvitem{Supported delivery teams in Slovakia and Hungary with custom transformation logic and QA pipelines for 50M+ record migrations.}
+    \cvitem{Architected and maintained an internal ETL platform; drove 100x performance improvements under tight deadlines.}
+    \cvitem{Managed versioning and deployment of Oracle DB schema changes in enterprise banking systems.}
+    \cvitem{Onboarded 4+ junior developers and contributed to team knowledge sharing and mentorship.}
+  \cvitemend
+  
+  \cvheading
+    {Joint Institute for Nuclear Research}{Dubna, RU}
+    {Intern}{07/2017 - 09/2017}
+  \cvitemstart
+    \cvitem{Designed a cooling control system using National Instruments PXI hardware, improving thermal stability for NICA experiments.}
+    \cvitem{Developed a Slow Control system for real-time monitoring and regulation of experimental modules.}
+    \cvitem{Programmed real-time and FPGA-based systems in LabView to support low-latency data acquisition.}
+    \cvitem{Integrated a high-voltage power supply via Modbus, enhancing operational safety and device interoperability.}
+    \cvitem{Implemented a hardware security lock system to reduce human error in RACK access and servicing.}
+    \cvitem{Presented at “NICA Days 2017,” contributing to international scientific collaboration.}
+  \cvitemend
+\cvheadingend
+
+\section{Leadership Experience}
+\cvheadingstart
+  \cvheading
+    {WellMate}{Remote / Poland}
+    {Technical Co-Founder}{2023 -- Present}
+  \cvitemstart
+    \cvitem{Co-founded a wellness app startup with support from Warsaw School of Economics.}
+    \cvitem{Architected and deployed a robust cloud-native backend infrastructure integrated with strategic self-hosted services, catalyzing scalability and agility in product development.}
+    \cvitem{Mentored a diverse, cross-functional team (UX/UI, software development, marketing).}
+  \cvitemend
+  
+  \cvheading
+    {LBC Phase 2}{Remote / Canada}
+    {Technical Lead}{2022}
+  \cvitemstart
+    \cvitem{Led a 4-person engineering team to document and evaluate technical implementations from Phase 1 of a core banking migration project.}
+    \cvitem{Owned analysis and comparison of system adjustments across phases, contributing to delivery planning and cross-team alignment.}
+  \cvitemend
+\cvheadingend
+
+
+\section{Skills \& Personal}
+\textbf{Programming Languages:} Python, Kotlin (incl. Kotlin Multiplatform), Scala, Java, C, C++
+\\\textbf{Cloud Platforms:} Google Cloud Platform (GCP), Microsoft Azure, AWS, IBM Cloud
+\\\textbf{Databases:} Oracle, MySQL, RealmDB, BigQuery
+\\\textbf{Frameworks \& Tools:} FastAPI, Flask, Jenkins, Git, JIRA, Temporal.io, NumPy, Pandas, SciPy
+\\\textbf{Concurrency \& Performance:} Multiprocessing, multithreading, parallel computing, performance tuning with profilers
+\\\textbf{Architecture:} Modular systems design, shared libraries, design patterns (e.g. MVC)
+\\\textbf{Data Pipelines:} Apache Kafka, Google Pub/Sub, IBM MQ, Dataflow
+\\\textbf{Banking Systems:} Temenos T24, Vault
+\\\textbf{Productivity Tools:} Microsoft Office Suite, Cutover Tool
+\\\textbf{Languages:} Polish (native), English (fluent), German (beginner)
+
+\section{Certifications}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{GCP Professional Cloud Architect}
+  \cvitem{GCP Associate Cloud Engineer (expired)}
+  \cvitem{AWS Certified Cloud Practitioner}
+  \cvitem{Microsoft Azure Fundamentals (AZ-900)}
+  \cvitem{Cambridge English: Advanced (CAE)}
+  \cvitem{Mambu Solution Consultant I}
+  \cvitem{nCino: 201 Commercial Banking Functional}
+\cvitemend
+\cvheadingend
+
+\vspace{-5pt}
+
+\section{Additional}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{\textbf{Licenses \& Certifications:} Accelerator Design With OpenCL – Télécom Paris (2021)}
+  \cvitem{\textbf{Volunteering:} Volunteer/Coordinator – Uwolnij Złomka (2021)}
+  \cvitem{\textbf{Leadership \& Competitions:} Start-up Manager – Warsaw University of Technology (2021)}
+  \cvitem{\textbf{Training Programs:} Core Banking TechLab – Deloitte Consulting S.A. (2019)}
+\cvitemend
+\cvheadingend
+
+\vspace{15pt}
+
+\textit{I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).}
+
+\end{document}
