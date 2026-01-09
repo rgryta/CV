@@ -2,6 +2,8 @@ name: Compile LaTeX
 on:
   push:
     branches: [ main ]  
+permissions:
+  contents: write 
 jobs:
   make-document:
     runs-on: ubuntu-latest
