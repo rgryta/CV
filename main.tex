@@ -51,7 +51,18 @@
 \pdfgentounicode=1
 
 % custom commands
+\makeatletter
+\newif\ifcv@listopen
+
+\newcommand{\cv@openlistifneeded}{%
+  \ifcv@listopen\else
+    \begin{itemize}[label=\textopenbullet]\justifying
+    \cv@listopentrue
+  \fi
+}
+
 \newcommand{\cvitem}[1]{
+  \cv@openlistifneeded
   \item\small{
     {#1\vspace{-2pt}}
   }
@@ -67,8 +78,8 @@
 
 \newcommand{\cvheadingstart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\cvheadingend}{\end{itemize}}
-\newcommand{\cvitemstart}{\begin{itemize}[label=\textopenbullet]\justifying}
-\newcommand{\cvitemend}{\end{itemize}\vspace{-5pt}}
+\newcommand{\cvitemstart}{\cv@listopenfalse}
+\newcommand{\cvitemend}{\ifcv@listopen\end{itemize}\vspace{-5pt}\fi}
 
 \newcommand{\cvskill}[2]{
   \textcolor{black}{\textbf{#1}}\hfill
@@ -82,7 +93,6 @@
 % tag system for conditional compilation
 % Usage: pdflatex "\def\tag@filtered{}\def\tag@devops{}\def\tag@cloud{}\input{main.tex}"
 % Without \tag@filtered, everything is shown (default)
-\makeatletter
 \newif\iftagmatch
 
 \newcommand{\cv@checktag}[1]{%
