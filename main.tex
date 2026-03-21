@@ -79,6 +79,39 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\footnotesize$\bullet$}}$}
 
+% tag system for conditional compilation
+% Usage: pdflatex "\def\tag@filtered{}\def\tag@devops{}\def\tag@cloud{}\input{main.tex}"
+% Without \tag@filtered, everything is shown (default)
+\newif\iftagmatch
+
+\newcommand{\@checktag}[1]{%
+  \ifcsdef{tag@#1}{\tagmatchtrue}{}%
+}
+
+\newcommand{\cvtaggeditem}[2]{%
+  \ifcsdef{tag@filtered}{%
+    \tagmatchfalse
+    \forcsvlist{\@checktag}{#1}%
+    \iftagmatch \cvitem{#2}\fi
+  }{\cvitem{#2}}%
+}
+
+\newif\iffirstskill
+\firstskilltrue
+
+\newcommand{\cvskillitem}[1]{%
+  \iffirstskill\firstskillfalse\else\\\fi
+  #1%
+}
+
+\newcommand{\cvtaggedskillitem}[2]{%
+  \ifcsdef{tag@filtered}{%
+    \tagmatchfalse
+    \forcsvlist{\@checktag}{#1}%
+    \iftagmatch\cvskillitem{#2}\fi
+  }{\cvskillitem{#2}}%
+}
+
 \begin{document}
 
 % contact information
