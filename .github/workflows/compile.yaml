@@ -20,12 +20,14 @@ jobs:
           if: github.event.inputs.tags != ''
           run: |
             TAGS="${{ github.event.inputs.tags }}"
-            echo '\def\tag@filtered{}' > tagged.tex
+            echo '\makeatletter' > tagged.tex
+            echo '\def\tag@filtered{}' >> tagged.tex
             IFS=',' read -ra TAG_ARRAY <<< "$TAGS"
             for tag in "${TAG_ARRAY[@]}"; do
               tag=$(echo "$tag" | xargs)
               echo "\def\tag@${tag}{}" >> tagged.tex
             done
+            echo '\makeatother' >> tagged.tex
             echo '\input{main.tex}' >> tagged.tex
             cat tagged.tex
           shell: bash
