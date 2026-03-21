@@ -1,23 +1,43 @@
 name: Compile LaTeX
 on:
   push:
-    branches: [ main ]  
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Comma-separated tags (e.g., devops,cloud). Empty = all.'
+        required: false
+        default: ''
 permissions:
-  contents: write 
+  contents: write
 jobs:
   make-document:
     runs-on: ubuntu-latest
     steps:
         - name: Checkout the code
           uses: actions/checkout@main
+        - name: Generate tagged wrapper
+          if: github.event.inputs.tags != ''
+          run: |
+            TAGS="${{ github.event.inputs.tags }}"
+            echo '\def\tag@filtered{}' > tagged.tex
+            IFS=',' read -ra TAG_ARRAY <<< "$TAGS"
+            for tag in "${TAG_ARRAY[@]}"; do
+              tag=$(echo "$tag" | xargs)
+              echo "\def\tag@${tag}{}" >> tagged.tex
+            done
+            echo '\input{main.tex}' >> tagged.tex
+            cat tagged.tex
+          shell: bash
         - name: Compile LaTeX document
           uses: xu-cheng/latex-action@v2
           with:
-            root_file: main.tex
+            root_file: ${{ github.event.inputs.tags != '' && 'tagged.tex' || 'main.tex' }}
         - name: Move to output
           run: |
-            mkdir output
-            cp ./main.pdf ./output/CV.pdf
+            mkdir -p output
+            PDF_NAME=${{ github.event.inputs.tags != '' && 'tagged' || 'main' }}
+            cp ./${PDF_NAME}.pdf ./output/CV.pdf
           shell: bash
         - name: Deploy on GH Pages
           uses: JamesIves/github-pages-deploy-action@v4.3.3
