@@ -16,6 +16,7 @@
 \usepackage{etoolbox}
 \usepackage{tikz}
 \usepackage{needspace}
+\usepackage{multicol}
 \input{glyphtounicode}
 
 % font options
@@ -168,7 +169,7 @@
     \cvtaggeditem{dev,devops}{Drove a cross-team CI reliability effort: reduced flaky-test failure probability from \textasciitilde80\% to \textasciitilde2\% per run, cut build times from 45s to 6s (\textasciitilde12 CI hours saved daily), and type-checking from up to 15 minutes to 45s.}
     \cvtaggeditem{dev,cloud,ai}{Designed a gVisor-sandboxed code-execution platform for LLM agents, S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
     \cvtaggeditem{devops,cloud}{Architected observability with Prometheus, Datadog, and PagerDuty (dashboards, alerting, runbooks), plus ephemeral CI-driven review environments and Kubernetes-based local development infrastructure.}
-    \cvtaggeditem{dev,data}{Cut memory of data-heavy services by 50--70\% via a Polars-based spreadsheet profiler and allocator tuning (jemalloc, pymalloc).}
+    \cvtaggeditem{dev,data}{Cut memory use of data-heavy services by 50--70\% with a Polars spreadsheet profiler and jemalloc tuning.}
     \cvtaggeditem{leadership,ai}{Mentored engineers into owning releases and customer onboarding; authored reusable AI-agent (Claude Code) skills and runbooks that made environment onboarding self-service.}
   \cvitemend
 
@@ -177,8 +178,8 @@
     {Software Engineer}{01/2023 - 10/2025}
   \cvitemstart
     \cvtaggeditem{devops,dev}{Built automation tools in Python integrating Temporal.io, JIRA, Jenkins, Git, and GCP; reduced recurring DevOps tasks by over 50\%.}
-    \cvtaggeditem{dev}{Led a modernization of legacy internal tools, delivering up to 10x speedups and better reliability and developer experience.}
-    \cvtaggeditem{dev,cloud,data}{Architected scalable backend services in Python and Scala on GCP (Pub/Sub, Dataflow, BigTable, BigQuery) and MySQL.}
+    \cvtaggeditem{dev}{Modernized legacy internal tools with up to 10x speedups and improved reliability and developer experience.}
+    \cvtaggeditem{dev,cloud,data}{Architected scalable Python/Scala backend services on GCP (Pub/Sub, Dataflow, BigTable, BigQuery).}
     \cvtaggeditem{dev}{Designed a FastAPI-based API Factory that standardized delivery across 10+ areas and reduced time-to-market.}
     \cvtaggeditem{devops,cloud}{Migrated infrastructure to Google Kubernetes Engine (GKE), improving observability, uptime, and scalability.}
     \cvtaggeditem{dev,devops}{Led cross-service performance tuning initiatives, optimizing resource usage and reducing latency in key pipelines.}
@@ -209,8 +210,8 @@
     {Joint Institute for Nuclear Research}{Dubna, RU}
     {Intern}{07/2017 - 09/2017}
   \cvitemstart
-    \cvtaggeditem{embedded}{Designed a cooling control system on National Instruments PXI hardware and a Slow Control system for real-time monitoring of NICA experimental modules.}
-    \cvtaggeditem{embedded}{Programmed real-time and FPGA-based systems in LabView and integrated a high-voltage power supply via Modbus; presented at “NICA Days 2017.”}
+    \cvtaggeditem{embedded}{Designed cooling control (NI PXI) and Slow Control systems for real-time monitoring of NICA experiment modules.}
+    \cvtaggeditem{embedded}{Programmed real-time/FPGA systems in LabView and integrated HV power via Modbus; presented at “NICA Days 2017.”}
   \cvitemend
 \cvheadingend
 
@@ -221,10 +222,10 @@
     {Technical Co-Founder}{2023 -- 08/2026}
   \cvitemstart
     \cvtaggeditem{leadership}{Co-founded a wellness app startup with support from Warsaw School of Economics.}
-    \cvtaggeditem{cloud,dev}{Designed a cloud-native GCP architecture (App Engine, Cloud SQL, BigQuery) for multi-platform mobile apps with 99.9\%+ uptime.}
-    \cvtaggeditem{devops,cloud}{Set up GitHub Actions CI/CD with Flyway migrations, blue-green releases, and emulator and Playwright visual regression tests.}
-    \cvtaggeditem{dev}{Architected a RESTful API and a modular Kotlin Multiplatform library ecosystem (MVVM, Maven) for iOS and Android.}
-    \cvtaggeditem{dev}{Built OAuth2/PKCE health-provider integrations, a gamification engine, and AI-powered nutrition tracking with barcode scanning.}
+    \cvtaggeditem{cloud,dev}{Designed a cloud-native GCP architecture (App Engine, Cloud SQL, BigQuery) for mobile apps with 99.9\%+ uptime.}
+    \cvtaggeditem{devops,cloud}{Set up GitHub Actions CI/CD with Flyway migrations, blue-green releases, and visual regression tests.}
+    \cvtaggeditem{dev}{Architected a RESTful API and modular Kotlin Multiplatform libraries (MVVM) for iOS and Android.}
+    \cvtaggeditem{dev}{Built OAuth2/PKCE health integrations, a gamification engine, and AI nutrition tracking with barcode scanning.}
     \cvtaggeditem{leadership}{Mentored a diverse, cross-functional team (UX/UI, software development, marketing).}
   \cvitemend
 \cvheadingend
@@ -247,6 +248,7 @@
 \section{Certifications}
 \cvheadingstart
 \item
+\begin{multicols}{2}
 \cvitemstart
   \cvtaggeditem{cloud}{GCP Professional Cloud Architect}
   \cvtaggeditem{cloud}{AWS Certified Cloud Practitioner}
@@ -255,6 +257,7 @@
   \cvtaggeditem{banking}{Mambu Solution Consultant I}
   \cvtaggeditem{banking}{nCino: 201 Commercial Banking Functional}
 \cvitemend
+\end{multicols}
 \cvheadingend
 
 \vspace{-5pt}
