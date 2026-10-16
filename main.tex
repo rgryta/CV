@@ -138,7 +138,7 @@
   $\ \diamond\ $ 
   (+48) 500-118-219
   $\ \diamond\ $
-  \href{https://www.linkedin.com/}{https://www.linkedin.com/in/rgryta/}
+  \href{https://www.linkedin.com/in/rgryta/}{https://www.linkedin.com/in/rgryta/}
 \end{center}
 
 \section{Education}
@@ -158,16 +158,17 @@
 \cvheadingstart
   \cvheading
     {Complexio}{Warsaw, PL}
-    {Software Engineer}{11/2025 - Present}
+    {Senior Software Engineer}{11/2025 - Present}
   \cvitemstart
-    \cvtaggeditem{devops,cloud}{Architected and implemented comprehensive observability infrastructure using Prometheus and Datadog, enabling distributed tracing and performance monitoring across microservices.}
-    \cvtaggeditem{dev,devops}{Led migration of Python applications to a standardized framework, refactoring monoliths into proper packages with optimized Docker builds for improved maintainability and deployment consistency.}
-    \cvtaggeditem{dev}{Designed and developed automation orchestration system components leveraging asyncio and batch processing patterns for data analysis and workflow automation.}
-    \cvtaggeditem{devops,cloud}{Built Kubernetes/Podman-based local development infrastructure and ephemeral CI-driven review environments, streamlining developer onboarding and feature validation.}
+    \cvtaggeditem{devops,cloud}{Owned the migration of a production LLM agent platform from Podman to Kubernetes (k0s/AKS) with Helm and Flux GitOps across \textasciitilde9 enterprise customer environments, verifying configuration parity with zero semantic differences across 1,697 environment keys.}
+    \cvtaggeditem{dev,cloud,ai}{Built provider-independent LLM inference across Anthropic, Azure AI Foundry, and AWS Bedrock; delivered the Bedrock baseline in 3 weeks against a 2-month plan, with Terraform and least-privilege IAM for an enterprise customer's AWS deployment.}
     \cvtaggeditem{dev,data,devops}{Led migration of 5 microservices from SQLite/JSON to PostgreSQL using asyncpg, designing schemas, repository layers, internal HTTP APIs, and automated data migration tooling.}
-    \cvtaggeditem{dev}{Built a full-stack user-to-user sharing system for reports, artifacts, and documents with granular permissions and cross-user visibility controls.}
-    \cvtaggeditem{dev,data}{Replaced openpyxl with Polars-based profiler for smart spreadsheet extraction, enabling row-aware truncation and handling of large XLSX files.}
-    \cvtaggeditem{dev,devops}{Enhanced system reliability through jemalloc integration, pymalloc bypass for memory optimization, SIGUSR1 debugging tools, and structured logging frameworks.}
+    \cvtaggeditem{devops,leadership}{Served as release manager and on-call incident responder for a multi-customer release train, leading root-cause analyses across networking, Kubernetes, databases, and LLM providers, including vendor escalations with Microsoft.}
+    \cvtaggeditem{dev,devops}{Drove a cross-team CI reliability effort: reduced flaky-test failure probability from \textasciitilde80\% to \textasciitilde2\% per run, cut build times from 45s to 6s (\textasciitilde12 CI hours saved daily), and type-checking from up to 15 minutes to 45s.}
+    \cvtaggeditem{dev,cloud,ai}{Designed a gVisor-sandboxed code-execution platform for LLM agents, S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
+    \cvtaggeditem{devops,cloud}{Architected observability with Prometheus, Datadog, and PagerDuty (dashboards, alerting, runbooks), plus ephemeral CI-driven review environments and Kubernetes-based local development infrastructure.}
+    \cvtaggeditem{dev,data}{Reduced memory footprint of data-heavy services by 50--70\% with a Polars-based spreadsheet profiler and jemalloc/pymalloc allocator tuning.}
+    \cvtaggeditem{leadership,ai}{Mentored engineers into owning releases and customer onboarding; authored reusable AI-agent (Claude Code) skills and runbooks that made environment onboarding self-service.}
   \cvitemend
 
   \cvheading
@@ -246,14 +247,15 @@
 \section{Skills \& Personal}
 \firstskilltrue
 \cvskillitem{\textbf{Programming Languages:} Python, Kotlin (incl. Kotlin Multiplatform), Rust, Scala, Java, C, C++}
-\cvtaggedskillitem{cloud}{\textbf{Cloud Platforms:} Google Cloud Platform (GCP), Microsoft Azure, AWS, IBM Cloud}
+\cvtaggedskillitem{cloud}{\textbf{Cloud Platforms:} Google Cloud Platform (GCP), Microsoft Azure (AKS, AI Foundry), AWS (Bedrock, IAM), IBM Cloud}
 \cvtaggedskillitem{data,dev}{\textbf{Databases:} PostgreSQL (asyncpg), Oracle, MySQL, RealmDB, BigQuery, QuestDB, MongoDB, Memgraph}
 \cvtaggedskillitem{dev}{\textbf{Frameworks \& Tools:} FastAPI, Flask, Compose Multiplatform, Polars, Jenkins, Git, JIRA, Temporal.io}
 \cvtaggedskillitem{dev}{\textbf{Concurrency \& Performance:} Multiprocessing, multithreading, parallel computing, jemalloc, performance tuning with profilers}
 \cvtaggedskillitem{dev}{\textbf{Architecture:} Modular systems design, shared libraries (Repository, Facade, Strategy, Pipeline, MVVM, Circuit Breaker, Event-Driven)}
 \cvtaggedskillitem{data}{\textbf{Data Pipelines:} Apache Kafka, Redpanda, Google Pub/Sub, IBM MQ, Dataflow}
-\cvtaggedskillitem{dev}{\textbf{ML \& AI:} MLflow, DINOv2, LaMa, SPAN, OpenAI, Google Gemini}
-\cvtaggedskillitem{devops}{\textbf{Infrastructure:} Traefik, Authentik, WireGuard, Docker/Podman, Kubernetes}
+\cvtaggedskillitem{dev,ai}{\textbf{LLM \& AI:} Anthropic Claude, AWS Bedrock, Azure AI Foundry, OpenAI, Google Gemini, agentic workflows, MCP, MLflow}
+\cvtaggedskillitem{devops}{\textbf{Infrastructure:} Kubernetes (k0s, AKS), Helm, Flux/GitOps, Terraform, gVisor, Docker/Podman, Traefik, HAProxy, Authentik, WireGuard}
+\cvtaggedskillitem{devops}{\textbf{Observability:} Datadog, Prometheus, PagerDuty}
 \cvtaggedskillitem{banking}{\textbf{Banking Systems:} Temenos T24, Vault}
 \cvskillitem{\textbf{Productivity Tools:} Microsoft Office Suite, Cutover Tool}
 \cvskillitem{\textbf{Languages:} Polish (native), English (fluent), German (beginner)}
@@ -263,7 +265,6 @@
 \item
 \cvitemstart
   \cvtaggeditem{cloud}{GCP Professional Cloud Architect}
-  \cvtaggeditem{cloud}{GCP Associate Cloud Engineer (expired)}
   \cvtaggeditem{cloud}{AWS Certified Cloud Practitioner}
   \cvtaggeditem{cloud}{Microsoft Azure Fundamentals (AZ-900)}
   \cvitem{Cambridge English: Advanced (CAE)}
