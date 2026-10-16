@@ -15,6 +15,7 @@
 \usepackage{ragged2e}
 \usepackage{etoolbox}
 \usepackage{tikz}
+\usepackage{needspace}
 \input{glyphtounicode}
 
 % font options
@@ -69,7 +70,7 @@
 }
 
 \newcommand{\cvheading}[4]{
-  \vspace{-2pt}\item
+  \needspace{5\baselineskip}\vspace{-2pt}\item
     \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \small#3 & \small #4 \\
@@ -167,7 +168,7 @@
     \cvtaggeditem{dev,devops}{Drove a cross-team CI reliability effort: reduced flaky-test failure probability from \textasciitilde80\% to \textasciitilde2\% per run, cut build times from 45s to 6s (\textasciitilde12 CI hours saved daily), and type-checking from up to 15 minutes to 45s.}
     \cvtaggeditem{dev,cloud,ai}{Designed a gVisor-sandboxed code-execution platform for LLM agents, S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
     \cvtaggeditem{devops,cloud}{Architected observability with Prometheus, Datadog, and PagerDuty (dashboards, alerting, runbooks), plus ephemeral CI-driven review environments and Kubernetes-based local development infrastructure.}
-    \cvtaggeditem{dev,data}{Reduced memory footprint of data-heavy services by 50--70\% with a Polars-based spreadsheet profiler and jemalloc/pymalloc allocator tuning.}
+    \cvtaggeditem{dev,data}{Reduced memory footprint of data-heavy services by 50--70\% with a Polars-based spreadsheet profiler and \mbox{jemalloc}/\mbox{pymalloc} allocator tuning.}
     \cvtaggeditem{leadership,ai}{Mentored engineers into owning releases and customer onboarding; authored reusable AI-agent (Claude Code) skills and runbooks that made environment onboarding self-service.}
   \cvitemend
 
@@ -208,12 +209,8 @@
     {Joint Institute for Nuclear Research}{Dubna, RU}
     {Intern}{07/2017 - 09/2017}
   \cvitemstart
-    \cvtaggeditem{embedded}{Designed a cooling control system using National Instruments PXI hardware, improving thermal stability for NICA experiments.}
-    \cvtaggeditem{embedded}{Developed a Slow Control system for real-time monitoring and regulation of experimental modules.}
-    \cvtaggeditem{embedded}{Programmed real-time and FPGA-based systems in LabView to support low-latency data acquisition.}
-    \cvtaggeditem{embedded}{Integrated a high-voltage power supply via Modbus, enhancing operational safety and device interoperability.}
-    \cvtaggeditem{embedded}{Implemented a hardware security lock system to reduce human error in RACK access and servicing.}
-    \cvtaggeditem{embedded}{Presented at “NICA Days 2017,” contributing to international scientific collaboration.}
+    \cvtaggeditem{embedded}{Designed a cooling control system on National Instruments PXI hardware and a Slow Control system for real-time monitoring of NICA experimental modules.}
+    \cvtaggeditem{embedded}{Programmed real-time and FPGA-based systems in LabView and integrated a high-voltage power supply via Modbus; presented at “NICA Days 2017.”}
   \cvitemend
 \cvheadingend
 
@@ -225,21 +222,10 @@
   \cvitemstart
     \cvtaggeditem{leadership}{Co-founded a wellness app startup with support from Warsaw School of Economics.}
     \cvtaggeditem{cloud,dev}{Designed and implemented a cloud-native architecture on GCP, orchestrating App Engine, Cloud SQL (PostgreSQL), and BigQuery to support multi-platform mobile applications with 99.9\%+ uptime.}
-    \cvtaggeditem{devops,cloud}{Established Infrastructure as Code practices with GitHub Actions CI/CD pipelines, automated database migrations via Flyway, and blue-green deployment strategies for zero-downtime releases.}
-    \cvtaggeditem{dev}{Architected a RESTful API ecosystem serving Kotlin Multiplatform clients (iOS/Android), implementing synchronization protocols, internationalization support, and AI-powered feature integrations.}
-    \cvtaggeditem{dev}{Built a modular Kotlin Multiplatform library ecosystem following MVVM and clean architecture principles, published as Maven packages and consumed across iOS and Android.}
+    \cvtaggeditem{devops,cloud}{Established GitHub Actions CI/CD with Flyway database migrations, blue-green zero-downtime releases, and emulator-based runtime and Playwright visual regression tests.}
+    \cvtaggeditem{dev}{Architected a RESTful API and a modular Kotlin Multiplatform library ecosystem (MVVM, clean architecture, published as Maven packages) serving iOS and Android clients.}
     \cvtaggeditem{dev}{Developed full-stack features including OAuth2/PKCE health provider integrations, a gamification engine with badges and streaks, and AI-powered nutritional tracking with barcode scanning.}
-    \cvtaggeditem{dev,devops}{Built a near-self-testing CI/CD pipeline with Android emulator-based runtime tests, GCP Secret Manager for secure credentials, and Playwright visual regression checks.}
-    \cvtaggeditem{dev}{Migrated the full app stack to AGP 9, Kotlin 2.3, and Compose Multiplatform 1.10, staying on the cutting edge of KMP tooling.}
     \cvtaggeditem{leadership}{Mentored a diverse, cross-functional team (UX/UI, software development, marketing).}
-  \cvitemend
-  
-  \cvheading
-    {LBC Phase 2}{Remote / Canada}
-    {Technical Lead}{2022}
-  \cvitemstart
-    \cvtaggeditem{leadership,banking}{Led a 4-person engineering team to document and evaluate technical implementations from Phase 1 of a core banking migration project.}
-    \cvtaggeditem{banking}{Owned analysis and comparison of system adjustments across phases, contributing to delivery planning and cross-team alignment.}
   \cvitemend
 \cvheadingend
 
