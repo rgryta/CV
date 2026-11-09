@@ -1,4 +1,4 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -14,7 +14,6 @@
 \usepackage{fontawesome5}
 \usepackage{ragged2e}
 \usepackage{etoolbox}
-\usepackage{tikz}
 \usepackage{needspace}
 \usepackage{multicol}
 \setlength{\multicolsep}{0pt}
@@ -79,17 +78,17 @@
     \end{tabular*}\vspace{-7pt}
 }
 
+\newcommand{\cvsubheading}[2]{
+  \needspace{4\baselineskip}\vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
 \newcommand{\cvheadingstart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\cvheadingend}{\end{itemize}}
 \newcommand{\cvitemstart}{\cv@listopenfalse}
 \newcommand{\cvitemend}{\ifcv@listopen\end{itemize}\vspace{-5pt}\fi}
-
-\newcommand{\cvskill}[2]{
-  \textcolor{black}{\textbf{#1}}\hfill
-  \foreach \x in {1,...,5}{%
-    \space{\ifnumgreater{\x}{#2}{\color{black!80!white!20}}{\color{black}}\faSquare}}\par%
-  \vspace{-2pt}
-}
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\footnotesize$\bullet$}}$}
 
@@ -102,13 +101,24 @@
   \ifcsdef{tag@#1}{\tagmatchtrue}{}%
 }
 
-\newcommand{\cvtaggeditem}[2]{%
+\newcommand{\cvtagged}[2]{%
   \ifcsdef{tag@filtered}{%
     \tagmatchfalse
     \forcsvlist{\cv@checktag}{#1}%
-    \iftagmatch \cvitem{#2}\fi
-  }{\cvitem{#2}}%
+    \iftagmatch #2\fi
+  }{#2}%
 }
+
+% shown only in filtered builds that request one of the tags
+\newcommand{\cvoptional}[2]{%
+  \ifcsdef{tag@filtered}{%
+    \tagmatchfalse
+    \forcsvlist{\cv@checktag}{#1}%
+    \iftagmatch #2\fi
+  }{}%
+}
+
+\newcommand{\cvtaggeditem}[2]{\cvtagged{#1}{\cvitem{#2}}}
 
 \newif\iffirstskill
 \firstskilltrue
@@ -132,90 +142,79 @@
 % contact information
 \begin{center}
   \textbf{\LARGE\scshape Radosław Gryta} \\
-  MSc 
-  $\ \diamond\ $ 
-  MBA 
+  Senior Software Engineer: LLM agent platforms, Kubernetes, Python
+  $\ \diamond\ $
+  MSc
+  $\ \diamond\ $
+  MBA
   \\
   \vspace{1pt}\small
-  \href{mailto:radek.gryta@gmail.com}{radek.gryta@gmail.com}
-  $\ \diamond\ $ 
-  (+48) 500-118-219
+  Warsaw, PL
   $\ \diamond\ $
-  \href{https://www.linkedin.com/in/rgryta/}{https://www.linkedin.com/in/rgryta/}
+  \href{mailto:radek.gryta@gmail.com}{radek.gryta@gmail.com}
+  $\ \diamond\ $
+  +48 500 118 219
+  $\ \diamond\ $
+  \href{https://www.linkedin.com/in/rgryta/}{linkedin.com/in/rgryta}
+  $\ \diamond\ $
+  \href{https://github.com/rgryta}{github.com/rgryta}
 \end{center}
-
-\section{Education}
-\cvheadingstart
-  \cvheading
-    {Warsaw School of Economics}{Warsaw, PL}
-    {Executive MBA, MBA for Startups}{12/2022 - 05/2025}
-  \cvheading
-    {Warsaw University of Technology}{Warsaw, PL}
-    {M.Sc. in Engineering, Automatic Control and Robotics}{03/2020 - 06/2022}
-  \cvheading
-    {Warsaw University of Technology}{Warsaw, PL}
-    {B.Sc. in Engineering, Automatic Control and Robotics}{09/2015 - 02/2020}
-\cvheadingend
 
 \section{Professional Experience}
 \cvheadingstart
   \cvheading
     {Complexio}{Warsaw, PL}
-    {Senior Software Engineer}{11/2025 - Present}
+    {Senior Software Engineer}{11/2025 -- Present}
   \cvitemstart
-    \cvtaggeditem{devops,cloud}{Owned the Podman-to-Kubernetes (k0s/AKS) migration of a production LLM agent platform with Helm and Flux GitOps across \textasciitilde9 enterprise environments, with zero config differences across 1,697 keys.}
-    \cvtaggeditem{dev,cloud,ai}{Built provider-independent LLM inference (Anthropic, Azure AI Foundry, AWS Bedrock, OpenAI) behind typed adapters; shipped Bedrock in 3 weeks vs. a 2-month plan with Terraform and least-privilege IAM.}
-    \cvtaggeditem{dev,data,ai}{Built a data-discovery service letting LLM agents query enterprise sources (Snowflake, Oracle, PostgreSQL, Neo4j, Power BI, OpenAPI-described REST) under each user's native permissions, deriving table purposes and verified joins.}
-    \cvtaggeditem{dev,ai}{Designed governed scheduled reports for unattended agent runs: owner-authority rechecks per tool call, data-source preflight checks, lease-based run claims with reapers, and staged outputs published only on success.}
-    \cvtaggeditem{dev,data,devops}{Migrated 5 microservices from SQLite/JSON to PostgreSQL (asyncpg), incl. schemas, APIs and migration tooling.}
-    \cvtaggeditem{devops,leadership}{Served as release manager and on-call incident responder for a multi-customer release train, leading root-cause analyses across networking, Kubernetes, databases, and LLM providers, including vendor escalations with Microsoft.}
+    \cvtaggeditem{devops,cloud}{Owned the Podman-to-Kubernetes (k0s/AKS) migration of a production LLM agent platform across \textasciitilde9 enterprise environments, with Helm, Flux GitOps and Prometheus/Datadog/PagerDuty observability.}
+    \cvtaggeditem{dev,cloud,ai}{Built provider-independent LLM inference (Anthropic, Azure AI Foundry, AWS Bedrock, OpenAI); shipped Bedrock in 3 weeks vs. a 2-month plan with Terraform and least-privilege IAM.}
+    \cvtaggeditem{dev,data,ai}{Built a data-discovery service that lets AI agents find and query enterprise data (Snowflake, Oracle, PostgreSQL, Neo4j, Power BI, REST APIs) strictly within each user's own access rights.}
+    \cvtaggeditem{dev,ai}{Designed governed scheduled AI reports that run unattended yet never exceed their owner's data access, checking every source before a run and publishing results only on success.}
+    \cvtaggeditem{dev,cloud,ai}{Designed sandboxed code execution for LLM agents (gVisor on Kubernetes, Azure Container Apps), S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
     \cvtaggeditem{dev,devops}{Drove a cross-team CI reliability effort: reduced flaky-test failure probability from \textasciitilde80\% to \textasciitilde2\% per run, cut build times from 45s to 6s (\textasciitilde12 CI hours saved daily), and type-checking from up to 15 minutes to 45s.}
-    \cvtaggeditem{dev,cloud,ai}{Designed sandboxed code execution for LLM agents (gVisor on Kubernetes, Azure Container Apps dynamic sessions), S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
-    \cvtaggeditem{dev,devops}{Led a 150+ PR security and maintenance sweep: hardened authorization, upload parsing and sandbox limits, split monolithic modules, and upgraded to current majors (pandas 3, Vite 8, Node 24).}
-    \cvtaggeditem{devops,cloud,dev,data}{Architected observability (Prometheus, Datadog, PagerDuty), ephemeral CI review environments and Kubernetes local dev; cut memory use of data-heavy services by 50--70\% via a Polars profiler and jemalloc tuning.}
-    \cvtaggeditem{leadership,ai}{Mentored engineers into owning releases; wrote Claude Code skills making environment onboarding self-service.}
+    \cvtaggeditem{dev,data,devops}{Migrated 5 microservices from SQLite/JSON to PostgreSQL (asyncpg) and cut memory use of data-heavy services by 50--70\% with a Polars profiler and jemalloc tuning.}
+    \cvtaggeditem{dev,devops}{Led a codebase-wide security and maintenance sweep: hardened authorization, file-upload parsing and sandbox limits, and upgraded the stack to current majors (pandas 3, Vite 8, Node 24).}
+    \cvtaggeditem{devops,leadership,ai}{Release manager and on-call lead for a multi-customer release train, running root-cause analyses up to Microsoft escalations; mentored engineers into owning releases with self-service Claude Code runbooks.}
   \cvitemend
 
   \cvheading
     {Box Inc.}{Warsaw, PL}
-    {Software Engineer}{01/2023 - 10/2025}
+    {Software Engineer}{01/2023 -- 10/2025}
   \cvitemstart
     \cvtaggeditem{devops,dev}{Built Python automation with Temporal.io, JIRA, Jenkins, Git and GCP, cutting recurring DevOps tasks by 50\%+.}
-    \cvtaggeditem{dev}{Modernized legacy internal tools with up to 10x speedups and improved reliability and developer experience.}
+    \cvtaggeditem{dev,devops}{Modernized legacy internal tools and tuned cross-service pipelines, with up to 10x speedups and lower latency.}
     \cvtaggeditem{dev,cloud,data}{Architected scalable Python/Scala backend services on GCP (Pub/Sub, Dataflow, BigTable, BigQuery).}
     \cvtaggeditem{dev}{Designed a FastAPI-based API Factory that standardized delivery across 10+ areas and reduced time-to-market.}
     \cvtaggeditem{devops,cloud}{Migrated infrastructure to Google Kubernetes Engine (GKE), improving observability, uptime, and scalability.}
-    \cvtaggeditem{dev,devops}{Led cross-service performance tuning initiatives, optimizing resource usage and reducing latency in key pipelines.}
   \cvitemend
 
   \cvheading
     {Deloitte Consulting S.A.}{Warsaw, PL}
-    {Senior Specialist}{09/2021 - 12/2022}
+    {Senior Specialist}{09/2021 -- 12/2022}
   \cvitemstart
-    \cvtaggeditem{banking}{Delivered migration demos for core banking systems (T24, Vault) that helped secure client engagements.}
+    \cvtaggeditem{leadership,banking}{Led a 4-person team on a Canadian T24 migration project, owning architecture, roadmap, and client delivery.}
     \cvtaggeditem{dev,devops}{Developed automation tools in Python and Java for cutover processes, reducing manual deployment time by 40\%.}
     \cvtaggeditem{data,dev}{Built pipelines for test automation and GDPR-compliant anonymization, cutting data prep time by 60\%.}
     \cvtaggeditem{data,dev}{Integrated Kafka, REST APIs, and IBM MQ to enhance cross-system data reliability and monitoring.}
-    \cvtaggeditem{leadership,banking}{Led a 4-person team on a Canadian T24 migration project, owning architecture, roadmap, and client delivery.}
+    \cvtaggeditem{banking}{Delivered migration demos for core banking systems (T24, Vault) that helped secure client engagements.}
   \cvitemend
-
-  \cvheading
-    {Deloitte Consulting S.A.}{Warsaw, PL}
-    {Consultant}{10/2018 - 08/2021}
+  \cvsubheading{Consultant}{10/2018 -- 08/2021}
   \cvitemstart
-    \cvtaggeditem{data,banking}{Supported teams in Slovakia and Hungary with transformation logic and QA pipelines for 50M+ record migrations.}
     \cvtaggeditem{data,dev}{Architected and maintained an internal ETL platform; drove 100x performance improvements under tight deadlines.}
+    \cvtaggeditem{data,banking}{Supported teams in Slovakia and Hungary with transformation logic and QA pipelines for 50M+ record migrations.}
     \cvtaggeditem{devops,data,banking}{Managed versioning and deployment of Oracle DB schema changes in enterprise banking systems.}
     \cvtaggeditem{leadership}{Onboarded 4+ junior developers and contributed to team knowledge sharing and mentorship.}
   \cvitemend
-  
+
+  \cvoptional{embedded}{
   \cvheading
     {Joint Institute for Nuclear Research}{Dubna, RU}
-    {Intern}{07/2017 - 09/2017}
+    {Intern}{07/2017 -- 09/2017}
   \cvitemstart
-    \cvtaggeditem{embedded}{Designed cooling control (NI PXI) and Slow Control systems for real-time monitoring of NICA experiment modules.}
-    \cvtaggeditem{embedded}{Programmed real-time/FPGA systems in LabView and Modbus HV power control; presented at NICA Days 2017.}
+    \cvitem{Designed cooling control (NI PXI) and Slow Control systems for real-time monitoring of NICA experiment modules.}
+    \cvitem{Programmed real-time/FPGA systems in LabView and Modbus HV power control; presented at NICA Days 2017.}
   \cvitemend
+  }
 \cvheadingend
 
 \section{Leadership Experience}
@@ -224,27 +223,35 @@
     {WellMate}{Remote / Poland}
     {Technical Co-Founder}{2023 -- 08/2026}
   \cvitemstart
-    \cvtaggeditem{leadership}{Co-founded a wellness app startup with support from Warsaw School of Economics.}
-    \cvtaggeditem{cloud,dev}{Designed a cloud-native GCP architecture (App Engine, Cloud SQL, BigQuery) for mobile apps with 99.9\%+ uptime.}
-    \cvtaggeditem{devops,cloud}{Set up GitHub Actions CI/CD with Flyway migrations, blue-green releases, and visual regression tests.}
-    \cvtaggeditem{dev}{Architected a RESTful API and modular Kotlin Multiplatform libraries (MVVM) for iOS and Android.}
-    \cvtaggeditem{dev}{Built OAuth2/PKCE health integrations, a gamification engine, and AI nutrition tracking with barcode scanning.}
-    \cvtaggeditem{leadership}{Mentored a diverse, cross-functional team (UX/UI, software development, marketing).}
+    \cvtaggeditem{leadership}{Co-founded a wellness app startup backed by Warsaw School of Economics; led a cross-functional team (UX/UI, engineering, marketing).}
+    \cvtaggeditem{cloud,dev,devops}{Designed a GCP backend (App Engine, Cloud SQL, BigQuery) with 99.9\%+ uptime, GitHub Actions CI/CD and blue-green releases.}
+    \cvtaggeditem{dev}{Architected Kotlin Multiplatform apps for iOS and Android with OAuth2/PKCE health integrations and AI nutrition tracking.}
   \cvitemend
 \cvheadingend
 
+\section{Education}
+\cvheadingstart
+  \cvheading
+    {Warsaw School of Economics}{Warsaw, PL}
+    {Executive MBA, MBA for Startups}{12/2022 -- 05/2025}
+  \cvheading
+    {Warsaw University of Technology}{Warsaw, PL}
+    {M.Sc. in Engineering, Automatic Control and Robotics}{03/2020 -- 06/2022}
+  \cvheading
+    {Warsaw University of Technology}{Warsaw, PL}
+    {B.Sc. in Engineering, Automatic Control and Robotics}{09/2015 -- 02/2020}
+\cvheadingend
 
 \section{Skills \& Personal}
 \firstskilltrue
-\cvskillitem{\textbf{Programming Languages:} Python, Kotlin (incl. Kotlin Multiplatform), Rust, Scala, Java, C, C++}
+\cvskillitem{\textbf{Programming Languages:} Python, Kotlin (incl. Kotlin Multiplatform), Rust, TypeScript, Scala, Java, C, C++}
 \cvtaggedskillitem{cloud}{\textbf{Cloud Platforms:} GCP, Microsoft Azure (AKS, AI Foundry, Container Apps), AWS (Bedrock, IAM), IBM Cloud}
-\cvtaggedskillitem{data,dev}{\textbf{Databases:} PostgreSQL (asyncpg), Oracle, MySQL, RealmDB, BigQuery, QuestDB, MongoDB, Memgraph}
-\cvtaggedskillitem{dev}{\textbf{Frameworks \& Tools:} FastAPI, Flask, Compose Multiplatform, Polars, Jenkins, Git, JIRA, Temporal.io}
-\cvtaggedskillitem{dev}{\textbf{Concurrency \& Performance:} Multiprocessing, multithreading, jemalloc, profiling}
+\cvtaggedskillitem{data,dev}{\textbf{Databases:} PostgreSQL, Oracle, Snowflake, Neo4j, Memgraph, BigQuery, MySQL, MongoDB, QuestDB, RealmDB}
+\cvtaggedskillitem{dev}{\textbf{Frameworks \& Tools:} FastAPI, Flask, asyncpg, Polars, Compose Multiplatform, Temporal.io, Jenkins, JIRA}
 \cvtaggedskillitem{data}{\textbf{Data Pipelines:} Apache Kafka, Redpanda, Google Pub/Sub, IBM MQ, Dataflow}
 \cvtaggedskillitem{dev,ai}{\textbf{LLM \& AI:} Anthropic Claude, AWS Bedrock, Azure AI Foundry, OpenAI, Gemini, agentic workflows, MCP}
-\cvtaggedskillitem{devops}{\textbf{Infrastructure:} Kubernetes (k0s, AKS), Helm, Flux/GitOps, Terraform, gVisor, Podman, Traefik, HAProxy}
-\cvtaggedskillitem{devops}{\textbf{Observability:} Datadog, Prometheus, PagerDuty}
+\cvtaggedskillitem{devops}{\textbf{Infrastructure:} Kubernetes (k0s, AKS, GKE), Helm, Flux/GitOps, Terraform, GitHub Actions, Docker/Podman, gVisor}
+\cvtaggedskillitem{devops}{\textbf{Observability \& Performance:} Datadog, Prometheus, PagerDuty, profiling, jemalloc}
 \cvtaggedskillitem{banking}{\textbf{Banking Systems:} Temenos T24, Vault}
 \cvskillitem{\textbf{Languages:} Polish (native), English (fluent), German (beginner)}
 
@@ -254,8 +261,6 @@
 \begin{multicols}{2}
 \cvitemstart
   \cvtaggeditem{cloud}{GCP Professional Cloud Architect}
-  \cvtaggeditem{cloud}{AWS Certified Cloud Practitioner}
-  \cvtaggeditem{cloud}{Microsoft Azure Fundamentals (AZ-900)}
   \cvitem{Cambridge English: Advanced (CAE)}
   \cvtaggeditem{banking}{Mambu Solution Consultant I}
   \cvtaggeditem{banking}{nCino: 201 Commercial Banking Functional}
@@ -263,6 +268,7 @@
 \end{multicols}
 \cvheadingend
 
+\cvoptional{embedded,leadership,banking}{
 \vspace{-5pt}
 
 \section{Additional}
@@ -275,9 +281,12 @@
   \cvtaggeditem{banking}{\textbf{Training Programs:} Core Banking TechLab – Deloitte Consulting S.A. (2019)}
 \cvitemend
 \cvheadingend
+}
 
+\cvtagged{gdpr}{
 \vspace{6pt}
 
-{\footnotesize\textit{I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).}}
+{\footnotesize\textit{I consent to the processing of my personal data for the purposes of the recruitment process in accordance with Regulation (EU) 2016/679 of 27 April 2016 (GDPR).}}
+}
 
 \end{document}
