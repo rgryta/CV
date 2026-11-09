@@ -164,11 +164,14 @@
     {Senior Software Engineer}{11/2025 - Present}
   \cvitemstart
     \cvtaggeditem{devops,cloud}{Owned the Podman-to-Kubernetes (k0s/AKS) migration of a production LLM agent platform with Helm and Flux GitOps across \textasciitilde9 enterprise environments, with zero config differences across 1,697 keys.}
-    \cvtaggeditem{dev,cloud,ai}{Built provider-independent LLM inference (Anthropic, Azure AI Foundry, AWS Bedrock); shipped Bedrock in 3 weeks vs. a 2-month plan, with Terraform and least-privilege IAM for an enterprise AWS deployment.}
+    \cvtaggeditem{dev,cloud,ai}{Built provider-independent LLM inference (Anthropic, Azure AI Foundry, AWS Bedrock, OpenAI) with typed adapters for citations, compaction and files; shipped Bedrock in 3 weeks vs. a 2-month plan, with Terraform and least-privilege IAM.}
+    \cvtaggeditem{dev,data,ai}{Built a data-discovery service letting LLM agents query enterprise sources (Snowflake, Oracle, PostgreSQL, Neo4j, Power BI, OpenAPI-described REST) under each user's native permissions, deriving table purposes and verified joins.}
+    \cvtaggeditem{dev,ai}{Designed governed scheduled reports for unattended agent runs: owner-authority rechecks per tool call, data-source preflight checks, lease-based run claims with reapers, and staged outputs published only on success.}
     \cvtaggeditem{dev,data,devops}{Led migration of 5 microservices from SQLite/JSON to PostgreSQL using asyncpg, designing schemas, repository layers, internal HTTP APIs, and automated data migration tooling.}
     \cvtaggeditem{devops,leadership}{Served as release manager and on-call incident responder for a multi-customer release train, leading root-cause analyses across networking, Kubernetes, databases, and LLM providers, including vendor escalations with Microsoft.}
     \cvtaggeditem{dev,devops}{Drove a cross-team CI reliability effort: reduced flaky-test failure probability from \textasciitilde80\% to \textasciitilde2\% per run, cut build times from 45s to 6s (\textasciitilde12 CI hours saved daily), and type-checking from up to 15 minutes to 45s.}
-    \cvtaggeditem{dev,cloud,ai}{Designed a gVisor-sandboxed code-execution platform for LLM agents, S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
+    \cvtaggeditem{dev,cloud,ai}{Designed sandboxed code execution for LLM agents (gVisor on Kubernetes, Azure Container Apps dynamic sessions), S3-backed file storage, and brand-aware document generation (DOCX, PPTX, PDF, XLSX).}
+    \cvtaggeditem{dev,devops}{Led a 150+ PR security and maintenance sweep: hardened authorization, upload parsing and sandbox limits, split monolithic modules, and moved the stack to current majors (pandas 3, Vite 8, TypeScript 6, Node 24) with licence audits.}
     \cvtaggeditem{devops,cloud}{Architected observability with Prometheus, Datadog, and PagerDuty (dashboards, alerting, runbooks), plus ephemeral CI-driven review environments and Kubernetes-based local development infrastructure.}
     \cvtaggeditem{dev,data}{Cut memory use of data-heavy services by 50--70\% with a Polars spreadsheet profiler and jemalloc tuning.}
     \cvtaggeditem{leadership,ai}{Mentored engineers into owning releases and customer onboarding; authored reusable AI-agent (Claude Code) skills and runbooks that made environment onboarding self-service.}
@@ -235,8 +238,8 @@
 \section{Skills \& Personal}
 \firstskilltrue
 \cvskillitem{\textbf{Programming Languages:} Python, Kotlin (incl. Kotlin Multiplatform), Rust, Scala, Java, C, C++}
-\cvtaggedskillitem{cloud}{\textbf{Cloud Platforms:} GCP, Microsoft Azure (AKS, AI Foundry), AWS (Bedrock, IAM), IBM Cloud}
-\cvtaggedskillitem{data,dev}{\textbf{Databases:} PostgreSQL (asyncpg), Oracle, MySQL, RealmDB, BigQuery, QuestDB, MongoDB, Memgraph}
+\cvtaggedskillitem{cloud}{\textbf{Cloud Platforms:} GCP, Microsoft Azure (AKS, AI Foundry, Container Apps), AWS (Bedrock, IAM), IBM Cloud}
+\cvtaggedskillitem{data,dev}{\textbf{Databases:} PostgreSQL (asyncpg), Oracle, Snowflake, Neo4j, MySQL, RealmDB, BigQuery, QuestDB, MongoDB, Memgraph}
 \cvtaggedskillitem{dev}{\textbf{Frameworks \& Tools:} FastAPI, Flask, Compose Multiplatform, Polars, Jenkins, Git, JIRA, Temporal.io}
 \cvtaggedskillitem{dev}{\textbf{Concurrency \& Performance:} Multiprocessing, multithreading, jemalloc, profiling}
 \cvtaggedskillitem{data}{\textbf{Data Pipelines:} Apache Kafka, Redpanda, Google Pub/Sub, IBM MQ, Dataflow}
