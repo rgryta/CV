@@ -192,7 +192,6 @@
     {Deloitte Consulting S.A.}{Warsaw, PL}
     {Senior Specialist}{09/2021 -- 12/2022}
   \cvitemstart
-    \cvtaggeditem{leadership,banking}{Led a 4-person team on a Canadian T24 migration project, owning architecture, roadmap, and client delivery.}
     \cvtaggeditem{dev,devops}{Developed automation tools in Python and Java for cutover processes, reducing manual deployment time by 40\%.}
     \cvtaggeditem{data,dev}{Built pipelines for test automation and GDPR-compliant anonymization, cutting data prep time by 60\%.}
     \cvtaggeditem{data,dev}{Integrated Kafka, REST APIs, and IBM MQ to enhance cross-system data reliability and monitoring.}
@@ -200,13 +199,14 @@
   \cvitemend
   \cvsubheading{Consultant}{10/2018 -- 08/2021}
   \cvitemstart
+    \cvtaggeditem{leadership,banking}{Led a 4-person team on a Canadian T24 migration project, owning architecture, roadmap, and client delivery.}
     \cvtaggeditem{data,dev}{Architected and maintained an internal ETL platform; drove 100x performance gains under tight deadlines.}
     \cvtaggeditem{data,banking}{Supported teams in Slovakia and Hungary with transformation logic and QA pipelines for 50M+ record migrations.}
     \cvtaggeditem{devops,data,banking}{Managed versioning and deployment of Oracle DB schema changes in enterprise banking systems.}
     \cvtaggeditem{leadership}{Onboarded 4+ junior developers and contributed to team knowledge sharing and mentorship.}
   \cvitemend
 
-  \cvoptional{embedded}{
+  \cvoptional{embedded,dev,ai,data,devops,cloud}{
   \cvheading
     {Joint Institute for Nuclear Research}{Dubna, RU}
     {Intern}{07/2017 -- 09/2017}
@@ -221,7 +221,7 @@
 \cvheadingstart
   \cvheading
     {WellMate}{Remote / Poland}
-    {Technical Co-Founder (project discontinued)}{2023 -- 08/2026}
+    {Co-Founder (project discontinued)}{07/2023 -- 07/2026}
   \cvitemstart
     \cvtaggeditem{leadership}{Co-founded a wellness app startup backed by Warsaw School of Economics; led a cross-functional team.}
     \cvtaggeditem{cloud,dev,devops}{Designed a GCP backend (App Engine, Cloud SQL, BigQuery) with 99.9\%+ uptime and GitHub Actions CI/CD.}
@@ -229,17 +229,38 @@
   \cvitemend
 \cvheadingend
 
+\cvtagged{dev,ai,devops,cloud,data}{
+\section{Engineering Practices}
+\cvheadingstart
+\item
+\cvitemstart
+  \cvitem{Use Claude Code and MCP servers to drive implementation, code review and debugging, and to turn incident learnings into self-service runbooks.}
+  \cvitem{Ship through GitHub Actions CI/CD, with Helm and Flux GitOps for deployments and Terraform for cloud resources; gate releases on automated tests and type-checking.}
+  \cvitem{Track dependency and image upgrades automatically, and plan major-version upgrades of databases and brokers (PostgreSQL, MongoDB, Redpanda) one version at a time.}
+  \cvitem{Monitor services with Prometheus and PagerDuty alerting, and profile hot paths to cut memory use and latency.}
+  \cvitem{Self-host a lab on Docker Compose and ZFS behind Traefik, SSO/OIDC and WireGuard to test infrastructure patterns outside of work.}
+  \cvitem{Publish Rust, TypeScript and Kotlin libraries as open source, with versioned releases to Maven Central.}
+\cvitemend
+\cvheadingend
+}
+
 \section{Education}
 \cvheadingstart
+  \cvheading
+    {University of Warsaw}{Warsaw, PL}
+    {Postgraduate Degree, Psychology in Practice: Personal Effectiveness at Work}{10/2025 -- 06/2026}
   \cvheading
     {Warsaw School of Economics}{Warsaw, PL}
     {Executive MBA, MBA for Startups}{12/2022 -- 05/2025}
   \cvheading
     {Warsaw University of Technology}{Warsaw, PL}
-    {M.Sc. in Engineering, Automatic Control and Robotics}{03/2020 -- 06/2022}
+    {M.Sc. in Engineering, Automatic Control and Robotics}{02/2020 -- 06/2022}
+  \cvheading
+    {Télécom Paris}{Online}
+    {Accelerator Design With OpenCL (FPGA/GPU programming)}{11/2021}
   \cvheading
     {Warsaw University of Technology}{Warsaw, PL}
-    {B.Sc. in Engineering, Automatic Control and Robotics}{09/2015 -- 02/2020}
+    {B.Sc. in Engineering, Automatic Control and Robotics}{10/2015 -- 02/2020}
 \cvheadingend
 
 \section{Skills \& Personal}
@@ -255,17 +276,17 @@
 \cvtaggedskillitem{banking}{\textbf{Banking Systems:} Temenos T24, Vault}
 \cvskillitem{\textbf{Languages:} Polish (native), English (fluent, Cambridge CAE), German (beginner)}
 
-\cvoptional{embedded,leadership,banking}{
+\cvoptional{embedded,leadership,banking,dev,ai,data,devops,cloud}{
 \vspace{-5pt}
 
 \section{Additional}
 \cvheadingstart
 \item
 \cvitemstart
-  \cvtaggeditem{embedded,dev}{\textbf{Licenses \& Certifications:} Accelerator Design With OpenCL – Télécom Paris (2021)}
-  \cvitem{\textbf{Volunteering:} Volunteer/Coordinator – Uwolnij Złomka (2021)}
+  \cvtaggeditem{embedded,dev,cloud,ai,data,devops}{\textbf{Licenses \& Certifications:} AWS Certified Cloud Practitioner (2021--2027); Microsoft Azure Fundamentals, AI Fundamentals and Data Fundamentals (2020--2021); Machine Learning – Stanford University (2021)}
+  \cvitem{\textbf{Volunteering:} Volunteer Staff – Uwolnij Złomka (04/2021 -- 11/2021)}
   \cvtaggeditem{leadership}{\textbf{Leadership \& Competitions:} Start-up Manager – Warsaw University of Technology (2021)}
-  \cvtaggeditem{banking}{\textbf{Training Programs:} Core Banking TechLab – Deloitte Consulting S.A. (2019)}
+  \cvtaggeditem{banking}{\textbf{Training Programs:} Core Banking TechLab – Deloitte Consulting S.A. (2019); nCino Commercial Banking 201 (2022); Vault Fundamentals – Thought Machine (2022)}
 \cvitemend
 \cvheadingend
 }
