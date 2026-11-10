@@ -109,13 +109,13 @@
   }{#2}%
 }
 
-% shown only in filtered builds that request one of the tags
+% shown in unfiltered builds, and in filtered builds that request one of the tags
 \newcommand{\cvoptional}[2]{%
   \ifcsdef{tag@filtered}{%
     \tagmatchfalse
     \forcsvlist{\cv@checktag}{#1}%
     \iftagmatch #2\fi
-  }{}%
+  }{#2}%
 }
 
 \newcommand{\cvtaggeditem}[2]{\cvtagged{#1}{\cvitem{#2}}}
